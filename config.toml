@@ -1,0 +1,26 @@
+baseURL = 'https://mkz.me/weblog/'
+languageCode = 'en-us'
+title = "Patrick's new weblog iteration"
+theme = 'anubis'
+
+[params]
+  style = 'auto'
+  author = 'Patrick MARIE'
+  email = 'pm@mkz.me'
+  readMore = false
+
+[[params.social]]
+  id = "email"
+  name = "pm@mkz.me"
+
+[[params.social]]
+  id = "linkedin"
+  name = "patrickmarie"
+
+[[params.social]]
+  id = "github"
+  name = "mycroft"
+
+[[params.social]]
+  id = "twitter"
+  name = "mycroft"

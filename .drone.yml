@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build
+  image: pmarie/golang-hugo:latest
+  environment:
+    RSYNC_USER:
+      from_secret: RSYNC_USER
+    RSYNC_PASSWORD:
+      from_secret: RSYNC_PASSWORD
+  commands:
+  - hugo
+  - rsync -avz --delete public/ $${RSYNC_USER}@maki.mkz.me::weblog
