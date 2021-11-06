@@ -4,7 +4,7 @@ name: default
 
 steps:
 - name: submodules
-  images: alpine/git
+  image: alpine/git
   commands:
   - git submodule update --init --recursive
 
