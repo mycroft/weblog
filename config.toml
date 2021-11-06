@@ -3,6 +3,31 @@ languageCode = 'en-us'
 title = "Patrick's new weblog iteration"
 theme = 'anubis'
 
+[menu]
+[[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "categories"
+  name = "Categories"
+  url = "/categories"
+  weight = 9
+
+[[menu.main]]
+  identifier = "archive"
+  name = "Archives"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "back"
+  name = "Back to /"
+  url = "https://mkz.me/"
+  weight = 11
+
 [params]
   style = 'auto'
   author = 'Patrick MARIE'
