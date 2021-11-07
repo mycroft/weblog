@@ -2,6 +2,8 @@
 title: "xhprof, profiling PHP: Installation & configuration"
 date: 2010-05-10
 summary: "Profile PHP code like nobody else with xhprof"
+categories:
+  - php
 ---
 
 [xhprof](http://pecl.php.net/package/xhprof) is a opensource PHP extension developed by Facebook which allows to profile PHP code. It can be a very powerful tool if you're able to understand what it outputs, and allows you to optimize your PHP application.
@@ -71,6 +73,7 @@ while(FALSE != ($file = readdir($dir)))
 
 closedir($dir);
 ```
+
 Code profiling
 --------------
 
