@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = "Patrick's new weblog (at least the 42th)"
 theme = 'anubis'
 
+
 [menu]
 [[menu.main]]
   identifier = "home"
@@ -39,6 +40,7 @@ theme = 'anubis'
   author = 'Patrick MARIE'
   email = 'pm@mkz.me'
   readMore = false
+  customCSS = ["custom.css"]
 
 [[params.social]]
   id = "email"
