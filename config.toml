@@ -35,12 +35,14 @@ theme = 'anubis'
   url = "https://mkz.me/"
   weight = 11
 
+
 [params]
   style = 'auto'
   author = 'Patrick MARIE'
   email = 'pm@mkz.me'
   readMore = false
   customCSS = ["custom.css"]
+  enableGitInfo = true
 
 [[params.social]]
   id = "email"
