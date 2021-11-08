@@ -7,9 +7,11 @@ date: 2021-11-07T11:31:06+01:00
 
 * TBD
 
+
 # Tools
 
-* TBD
+* [nmap](https://nmap.org/) - Read the [nmap network scanning book](https://nmap.org/book/toc.html)
+
 
 # Techs
 
@@ -33,10 +35,17 @@ date: 2021-11-07T11:31:06+01:00
 
 * [Bypassing ASLR - Part I](https://sploitfun.wordpress.com/2015/05/08/bypassing-aslr-part-i/), [Part II](https://sploitfun.wordpress.com/2015/05/08/bypassing-aslr-part-ii/), [Part III](https://sploitfun.wordpress.com/2015/05/08/bypassing-aslr-part-iii/)
 
+
 # Books
  
 * [TCP/IP Illustrated, by W. Richard Stevens](https://en.wikipedia.org/wiki/TCP/IP_Illustrated)
 * [Hacking, The Art of Exploitation, 2nd Edition, by Jon Erickson](https://nostarch.com/hacking2.htm)
+
+
+# Repositories
+
+* [Phrack](http://phrack.org/)
+
 
 # CTF
 
