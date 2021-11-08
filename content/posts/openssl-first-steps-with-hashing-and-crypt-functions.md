@@ -48,12 +48,12 @@ To decrypt, the method is the same, and we've just to use *EVP_DecryptInit_ex*, 
 You'll find at [https://mkz.me/~mycroft/b/sslfilecrypt.c](https://mkz.me/~mycroft/b/sslfilecrypt.c) a simple tool using those functions in OpenSSL. It uses *getpass(3)* to get your password, then uses *sha256 functions* to get the crypt key, and then inits an IV and write in the file the crypted data.
 
 Compilation:
-```c
+```sh
 $ gcc -o sslfilecrypt sslfilecrypt.c -lssl
 ```
 
 Test:
-```shell
+```sh
 $ dd if=/dev/urandom of=./test bs=512 count=8000
 $ ./sslfilecrypt encrypt test test.crypted
 Password: *******
