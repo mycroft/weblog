@@ -331,3 +331,9 @@ As a result, in our example, the retrieved hostname on the frontend is corrently
 In this post, we discovered how to add logs in our app and make sure they can be correlated to traces, how to add events in spans, trace propagation across multiple services & finally, how to send data/context between different components in a single trace.
 
 Final source code: [frontend](src/jaeger/frontend.py), [backend](src/jaeger/backend.py).
+
+References:
+- https://medium.com/dzerolabs/observability-journey-understanding-logs-events-traces-and-spans-836524d63172
+- https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html
+- https://opentelemetry-python.readthedocs.io/en/latest/api/baggage.html
+- https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/overview.md
