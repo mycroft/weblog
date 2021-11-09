@@ -43,6 +43,8 @@ podman run -d --name jaeger \
 
 Once started, Jaeger should be available on localhost, on UI port 16686: [http://localhost:16686](http://localhost:16686).
 
+All ports are not required for what you want to do, so you can shrink the list a bit. Most importants ones in my opinion are 6831, 6832 (udp, to accept traces in jaeger.thrift formats), 5778 http port to serve config, 16686 http port to serve UI & finally 14268 to accept jaeger.thrift formats using http.
+
 # First Opentelemetry Python SDK usage
 
 I'll use the Python SDK to send a single trace. Before send it to jaeger, the following script will send it to the console for debug purpose.
@@ -171,6 +173,8 @@ The script is no longer very talkative as the trace is no longer sent to the con
 You can also see the span marked as errored.
 
 In a second part, I'll add more information in spans, as events/logs, add some logs & make sure logs are correctly correlated with traces, and in a final part, test trace propagation between a python frontend & a golang backend.
+
+In this part, you found out how to start jaeger in development mode, and send your first traces using the Opentelemetry Python SDK.
 
 References:
 
