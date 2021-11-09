@@ -329,3 +329,5 @@ As a result, in our example, the retrieved hostname on the frontend is corrently
 
 
 In this post, we discovered how to add logs in our app and make sure they can be correlated to traces, how to add events in spans, trace propagation across multiple services & finally, how to send data/context between different components in a single trace.
+
+Final source code: [frontend](src/jaeger/frontend.py), [backend](src/jaeger/backend.py).
