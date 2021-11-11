@@ -1,7 +1,9 @@
 ---
 title: "Trying Out Opentelemetry in Dotnet"
 date: 2021-11-10T22:01:08+01:00
-draft: true
+categories:
+  - opentelemetry
+summary: "Quick introduction of using Opentelemetry in C#/dotnet."
 ---
 
 After testing Opentelemetry & Jaeger with Python, next step is now to try to set up a dotnet web app and to intrumentalize it as well. Note I don't know at all C#/dotnet environments, that is my pretty much first project with those technologies.

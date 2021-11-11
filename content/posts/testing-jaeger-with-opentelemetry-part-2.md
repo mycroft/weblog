@@ -2,6 +2,8 @@
 title: "Testing Jaeger With Opentelemetry Part 2"
 date: 2021-11-09T12:05:15+01:00
 summary: "Using Opentelemetry logging, extending spans, propagating traces in a multiple component project"
+categories:
+  - opentelemetry
 ---
 
 In this post, I'll show how to customize spans, by adding logs & events & propagate traces in a multiple components application.
