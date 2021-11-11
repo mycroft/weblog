@@ -2,7 +2,6 @@
 title: "Testing Jaeger With Opentelemetry"
 date: 2021-11-09T10:27:04+01:00
 categories:
-  - observability
   - opentelemetry
 summary: "Testing Python & Golang opentelemetry & send traces to Jaeger"
 ---
