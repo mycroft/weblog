@@ -1,4 +1,4 @@
-baseURL = 'https://mkz.me/weblog'
+baseURL = 'https://mkz.me/weblog/'
 languageCode = 'en-us'
 title = "Patrick's new weblog (at least the 42th)"
 theme = 'anubis'
