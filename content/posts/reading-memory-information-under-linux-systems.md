@@ -98,8 +98,18 @@ These operations are non destructive and will only free non used things. Think t
 
 [Source](http://linux-mm.org/Drop_Caches)
 
-A few more links about memory
------------------------------
+## Finding out what processes are swapping
+
+More recently, I needed to find out what processes had some memory stored in swap (which is way slower than RAM).
+
+The swap information for each processes can also be found in /proc/<pid>/status:
+
+```sh
+$ cat /proc/$$/status | grep VmSwap
+VmSwap:        0 kB
+```
+
+## A few more links about memory
 
 * [What Every Programmer Should Know About Memory](http://www.akkadia.org/drepper/cpumemory.pdf)
 * [Understanding The Linux Virtual Memory Manager](https://www.kernel.org/doc/gorman/pdf/understand.pdf)
