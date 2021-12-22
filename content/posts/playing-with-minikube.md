@@ -1,7 +1,6 @@
 ---
 title: "Playing With Minikube"
 date: 2021-12-01T20:38:20+01:00
-draft: true
 summary: "How I spent an evening doing basic kubernetes things for fun and really no profit"
 ---
 
