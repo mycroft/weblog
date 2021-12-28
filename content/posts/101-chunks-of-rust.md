@@ -11,6 +11,8 @@ Goal: One snippet, one crate/doc page/poc/whatever.
 
 Have fun!
 
+# The Snippets
+
 ## Navigating into the command line args
 
 ```rust
@@ -45,3 +47,8 @@ fn main() {
 
 The [std::str::FromStr](https://doc.rust-lang.org/std/str/trait.FromStr.html) trait documentation.
 
+
+
+# All the crates
+
+  * [clap](https://crates.io/crates/clap): Command line argument parser
