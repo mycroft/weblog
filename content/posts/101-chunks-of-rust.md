@@ -87,7 +87,39 @@ fn main() {
 ```
 
 
+## Simple password generator
+
+```rust
+// Don't forget to add the rand crate in Cargo.toml file:
+//
+// [dependencies]
+// rand = "0.8.4"
+//
+use rand::prelude::*;
+
+fn generate(size: usize) -> String {
+    let mut rng = rand::thread_rng();
+
+    let printable_chars = (0x20u8..=0x7e).map(|c| c as char).collect::<Vec<char>>();
+
+    (0..size)
+        .map(|_| rng.gen::<usize>() % printable_chars.len())
+        .map(|idx| printable_chars[idx])
+        .collect()
+}
+
+fn main() {
+    for _ in 0..32 {
+        println!("{}", generate(16));
+    }
+}
+```
+
+It makes use of the [rand](https://crates.io/crates/rand) crate.
+
+
 # All the crates
 
-  * [clap](https://crates.io/crates/clap): Command line argument parser
-  * [pretty_env_logger](https://crates.io/crates/pretty_env_logger): Simple logger built on top of env_logger, configurable via environment variables & writing nice colored messages depending their log levels.
+  * [clap](https://crates.io/crates/clap): Command line argument parser;
+  * [pretty_env_logger](https://crates.io/crates/pretty_env_logger): Simple logger built on top of env_logger, configurable via environment variables & writing nice colored messages depending their log levels;
+  * [rand](https://crates.io/crates/rand): Random number generation, with quite some useful features.
