@@ -118,8 +118,144 @@ fn main() {
 It makes use of the [rand](https://crates.io/crates/rand) crate.
 
 
+## Swapping variables
+
+The following snippet will swap 2 variables (which type has `Copy` trait), and will print their address.
+
+```rust
+fn swap<T: Copy>(a: &mut T, b: &mut T) {
+    let z = *a;
+
+    *a = *b;
+    *b = z;
+}
+
+fn main() {
+    let mut a = 1;
+    let mut b = 2;
+
+    println!("ptr: {:p}: val: {} // ptr: {:p}; val: {}", &a, a, &b, b);
+    swap(&mut a, &mut b);
+    println!("ptr: {:p}: val: {} // ptr: {:p}; val: {}", &a, a, &b, b);
+}
+```
+
+
+## The Itertools crate
+
+```rust
+use itertools::Itertools;
+use itertools::{merge,partition,zip};
+
+fn main() {
+    // Get all permutations
+    println!("{:?}", (0..5).permutations(5).collect_vec());
+
+    // Get all uniques
+    println!("{:?}", vec![1, 2, 3, 2, 1].iter().unique().collect_vec());
+
+    // combine elements from first array with second's 
+    println!("{:?}", vec![0, 1, 2].iter().zip(vec![4, 5, 6]).collect_vec());
+    println!("{:?}", zip(vec![0, 1, 2], vec![0, 1, 2]).collect_vec());
+
+    // partition elements of array into 2.
+    let mut l = vec![1, 2, 3, 4, 5, 6];
+    partition(&mut l, |z| { z % 2 == 0 });
+    println!("{:?}", l); // [6, 2, 4, 3, 5, 1]
+
+    // merge two array into an iterator
+    println!("{:?}", merge(&[0, 1, 2], &[4, 5, 6]).collect_vec()); // [0, 1, 2, 4, 5, 6]
+    println!("{:?}", merge(&[0, 1, 2], &[0, 1, 2]).collect_vec()); // [0, 0, 1, 1, 2, 2]
+}
+```
+
+Check the [itertools functions](https://docs.rs/itertools/latest/itertools/index.html) & [itertools trait](https://docs.rs/itertools/latest/itertools/trait.Itertools.html).
+
+
+## Implementing Display & FromStr traits
+
+```rust
+use std::str::FromStr;
+use std::num::ParseIntError;
+use std::fmt;
+
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl fmt::Display for Point {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "P <{},{}>", self.x, self.y)
+    }
+}
+
+impl FromStr for Point {
+    type Err = ParseIntError;
+
+    fn  from_str(s: &str) -> Result<Self, Self::Err> {
+        let parts = s.split(",")
+            .collect::<Vec<&str>>()
+            .iter().map(|&x| x.parse::<i32>().unwrap())
+            .collect::<Vec<i32>>();
+
+        Ok(Self {
+            x: parts[0],
+            y: parts[1],
+        })
+    }
+}
+
+fn main() {
+    let p: Point = Point::from_str("-1,-1").unwrap();
+    println!("{}", p);
+}
+```
+
+As seen as on [Rust By Example](https://doc.rust-lang.org/rust-by-example/) ([Display](https://doc.rust-lang.org/rust-by-example/hello/print/print_display.html) of official doc); [FromStr](https://doc.rust-lang.org/std/str/trait.FromStr.html).
+
+
+# Testing out Iterator traits
+
+```rust
+use rand::Rng;
+
+#[derive(Clone, Copy, Debug)]
+struct Random {
+}
+
+impl Iterator for Random {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let n = rand::thread_rng().gen::<u32>();
+        if n % 100 == 0 {
+            None
+        } else {
+            Some(n)
+        }
+    }
+}
+
+fn main() {
+    let random_numbers = Random{};
+
+    for v in random_numbers {
+        println!("- {}", v);
+    }
+
+    println!("There is {} elements in this run.", random_numbers.count());
+}
+```
+
+The [Iterator trait](https://doc.rust-lang.org/std/iter/trait.Iterator.html) documentation. [Rust By Example's](https://doc.rust-lang.org/rust-by-example/trait/iter.html).
+
+
+
 # All the crates
 
   * [clap](https://crates.io/crates/clap): Command line argument parser;
+  * [itertools](https://crates.io/crates/itertools): Extra iterator adaptors, functions and macros;é
   * [pretty_env_logger](https://crates.io/crates/pretty_env_logger): Simple logger built on top of env_logger, configurable via environment variables & writing nice colored messages depending their log levels;
   * [rand](https://crates.io/crates/rand): Random number generation, with quite some useful features.
