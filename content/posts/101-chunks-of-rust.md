@@ -8,6 +8,8 @@ I'm ~~learning~~ writing more & more rust. But I really lack writing idiomatic c
 
 Goal: One snippet, one crate/doc page/poc/whatever.
 
+This page was last updated on 2022-01-03 and it is still WIP!
+
 Have fun!
 
 
