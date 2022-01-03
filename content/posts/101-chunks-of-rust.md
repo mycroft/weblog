@@ -1,7 +1,6 @@
 ---
 title: "101 Chunks of Rust"
 date: 2021-12-28T18:31:03+01:00
-draft: true
 summary: "Keeping a track of usefull Rust snippets."
 ---
 
@@ -251,6 +250,66 @@ fn main() {
 
 The [Iterator trait](https://doc.rust-lang.org/std/iter/trait.Iterator.html) documentation. [Rust By Example's](https://doc.rust-lang.org/rust-by-example/trait/iter.html).
 
+
+## Generic structures & enums
+
+```rust
+struct Testaroo<T> {
+    val0: T,
+}
+
+enum MyOption<T> {
+    None,
+    Some(Testaroo<T>)
+}
+
+fn main() {
+    // All the following code is valid and can be used as it!
+    let _ = Testaroo{ val0: "a" };
+    let _ : Testaroo<u64> = Testaroo{ val0: 42 };
+    let _ = Testaroo{ val0: 0.0 };
+
+    let _ : MyOption<bool> = MyOption::None;
+    let _ = MyOption::Some(Testaroo{ val0: true });
+}
+```
+
+
+## Arrays, vec & slices
+
+```rust
+fn main() {
+    let array : [u32; 4] = [1, 2, 3, 4];
+    let array_vec = array.to_vec();
+    let slice0 = &array[2..=3];
+    let slice1 = &array_vec[1..=2];
+
+    // Outputs: array:[1, 2, 3, 4] vec:[1, 2, 3, 4] slice:[3, 4] slice:[2, 3]
+    println!("array:{:?} vec:{:?} slice:{:?} slice:{:?}",
+        array, array_vec, slice0, slice1);
+
+    // auto-filled array declaration:
+    let vbool = [false; 100];
+
+    let vec: Vec<u32> = Vec::with_capacity(256);
+    println!("len:{} capacity:{}", vec.len(), vec.capacity());
+
+    let s0: &[bool] = &vbool;
+    println!("len:{}", s0.len());
+
+    let print = |n: &[bool]| {
+        for el in n {
+            println!("{:?}", el);
+        }
+    };
+
+    print(s0); // This will write a lot of "false".
+    print(&s0[..42]); // First 42 elements
+    print(&s0[99..]); // last element
+}
+```
+
+More about [arrays](https://doc.rust-lang.org/std/primitive.array.html), [slices](https://doc.rust-lang.org/std/primitive.slice.html) & [Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html).
 
 
 # All the crates
