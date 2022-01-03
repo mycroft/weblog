@@ -314,6 +314,30 @@ fn main() {
 More about [arrays](https://doc.rust-lang.org/std/primitive.array.html), [slices](https://doc.rust-lang.org/std/primitive.slice.html) & [Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html).
 
 
+## String to bytes array to &str
+
+```rust
+fn main() {
+    let s: &str = "新年快乐";
+    println!("{}", s);
+    let s: String = s.to_string(); // this copies the string
+
+    println!("len: {} chars: {}", s.len(), s.chars().count());
+
+    let s: &[u8] = &s.as_bytes(); // convert to bytes
+
+    println!("{}", String::from_utf8(s.to_vec()).unwrap()); // output: 新年快乐
+
+    let elements = ["a", "b", "c", "d"];
+    println!("{}", elements.concat()); // output: abcd
+    println!("{}", elements.join(", ")); // output: a, b, c, d
+
+    println!("{}", elements.concat().to_uppercase()); // output: ABCD
+    println!("{}", elements.join(", ").replace(",", ";")); // output: "A; B; C; D"
+    println!("{}", String::from("\n  A  \n").trim()); // output: "A"
+}
+```
+
 # All the crates
 
   * [clap](https://crates.io/crates/clap): Command line argument parser;
