@@ -338,9 +338,38 @@ fn main() {
 }
 ```
 
+
+## The Uuid crate
+
+```rust
+// Don't forget to add in Cargo.toml:
+// uuid = { version = "0.8.2", features = ["v4", "v5"] }
+use uuid::Uuid;
+
+fn main() {
+    let uuid = Uuid::new_v4();
+    println!("{:?}", uuid.to_urn());
+
+    // Doing some conversion
+    println!("{:?}", uuid.as_bytes());
+    let uuid = Uuid::from_bytes(*uuid.as_bytes());
+    println!("{:?}", uuid.to_urn());
+
+
+    let uuid = Uuid::new_v5(
+        &Uuid::NAMESPACE_URL,
+        "example.org".as_bytes(),
+    );
+    println!("{:?}", uuid.to_urn());
+}
+
+```
+
+
 # All the crates
 
   * [clap](https://crates.io/crates/clap): Command line argument parser;
   * [itertools](https://crates.io/crates/itertools): Extra iterator adaptors, functions and macros;é
   * [pretty_env_logger](https://crates.io/crates/pretty_env_logger): Simple logger built on top of env_logger, configurable via environment variables & writing nice colored messages depending their log levels;
   * [rand](https://crates.io/crates/rand): Random number generation, with quite some useful features.
+  * [uuid](https://crates.io/crates/uuid): Generate and parse UUIDs.
