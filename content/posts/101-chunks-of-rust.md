@@ -366,8 +366,25 @@ fn main() {
 ```
 
 
+## Anyhow
+
+Sometimes, handling errors in rust can be boring due to the type the error can be. There is a set of different crates to make this easier, and `anyhow` is one of them:
+
+```rust
+use anyhow::Result;
+
+fn main() -> Result<()> {
+    let contents = std::fs::read_to_string("test")?;
+    println!("{:?}", contents);
+
+    Ok(())
+}
+```
+
+
 # All the crates
 
+  * [anyhow](https://crates.io/crates/anyhow): Flexible error type;
   * [clap](https://crates.io/crates/clap): Command line argument parser;
   * [itertools](https://crates.io/crates/itertools): Extra iterator adaptors, functions and macros;é
   * [pretty_env_logger](https://crates.io/crates/pretty_env_logger): Simple logger built on top of env_logger, configurable via environment variables & writing nice colored messages depending their log levels;
