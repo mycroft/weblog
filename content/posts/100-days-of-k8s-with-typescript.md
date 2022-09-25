@@ -1,7 +1,6 @@
 ---
 title: "100 Days of K8S with Typescript"
 date: 2022-09-25T20:54:51+02:00
-draft: true
 summary: Let's write some stuff in typescript
 categories:
 - kubernetes
