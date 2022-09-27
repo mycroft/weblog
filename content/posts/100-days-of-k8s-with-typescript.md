@@ -212,3 +212,55 @@ Hello world!
 ```
 
 Applying the example chart using `kubectl apply` created a deployment (with 2 replicas) & a service binding on my installation port `8001` on each k8s nodes. Reaching one of the node is correctly serving the demo container.
+
+
+# Day 3: Testing using jest
+
+Today, I'm testing testing. It seems like it is possible to test javascript or typescript stuff with [jest](https://jestjs.io). When generating first time our cdk8s app, it created already a basic unit test. Let's install `jest` before continuing:
+
+```sh
+> npm install -y jest
+```
+
+jest is able to record snapshots of the current state, so it can be re-tested later. This can be done thanks to:
+
+```sh
+> jest --updateSnapshot
+```
+
+I added some basic test to verify the generated service. I'm testing it is a label value, the defined ports and the type . It looks like this:
+
+```ts
+  test('HelloWorldTsHasService', () => {
+    const app = Testing.app();
+    const chart = new HelloWorldChart(app, 'test-chart');
+    const results = Testing.synth(chart);
+
+    var service = results.find((obj) => {
+      return obj.kind === 'Service';
+    });
+
+    expect(service.metadata.labels['app']).toBe('hello-k8s');
+    expect(service.spec.ports.length).toBe(1);
+    expect(service.spec.ports[0].port).toBe(8001);
+    expect(service.spec.ports[0].targetPort).toBe(8080);
+    expect(service.spec.type).toBe('LoadBalancer');
+  });
+```
+
+Running the test looked like this:
+
+```sh
+> jest
+ PASS  ./main.test.ts
+  TestHelloWorldTs
+    ✓ BasicHelloWorldSnapshot (5 ms)
+    ✓ HelloWorldTsHasService (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   1 passed, 1 total
+Time:        1.192 s
+Ran all test suites.
+```
+
