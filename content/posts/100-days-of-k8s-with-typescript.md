@@ -264,3 +264,57 @@ Time:        1.192 s
 Ran all test suites.
 ```
 
+
+# Day 4: Playing with kubernetes/client-node.
+
+Today, I took a look to the javascript kubernetes client, aka [kubernetes/client-node](https://github.com/kubernetes-client/javascript).
+
+First, I created a new project and imported the library:
+
+```sh
+> npm install -y @kubernetes/client-node
+```
+
+Then, I wrote some code:
+
+```ts
+import _, { CoreV1Api, AppsV1Api, KubeConfig } from '@kubernetes/client-node';
+
+const kc = new KubeConfig();
+kc.loadFromDefault();
+
+const k8sApi = kc.makeApiClient(CoreV1Api);
+const k8sAppsApi = kc.makeApiClient(AppsV1Api);
+
+async function listDeploymentsForNamespace(namespace: string) {
+    const res = await k8sAppsApi.listNamespacedDeployment(namespace);
+    res.body.items.forEach((o: _.V1Deployment) => {
+        console.log("namespace:" + namespace + " " + o.metadata?.name);
+    });
+}
+
+async function listNamespacesAndDeployments() {
+    const res = await k8sApi.listNamespace();
+    res.body.items.forEach((o: _.V1Namespace) => {
+        if (typeof o.metadata?.name === 'string') {
+            listDeploymentsForNamespace(o.metadata?.name);
+        }
+    });
+}
+
+listNamespacesAndDeployments();
+```
+
+The snippet is quite small, and it took me some time to write it as I really hate async code. My goal was to write a couple of api calls and do stuff with those, and the only thing I succeeded was to list namespaces & deployments in those. At first, the result was messy (async code!), but eventually I made it work. The result of this:
+
+```sh
+> npx ts-node hello-world.ts
+namespace:default hello-world-ts-deployment-c881e597
+namespace:cert-manager cert-manager
+namespace:cert-manager cert-manager-cainjector
+namespace:cert-manager cert-manager-webhook
+namespace:kube-system local-path-provisioner
+namespace:kube-system coredns
+namespace:kube-system traefik
+namespace:kube-system metrics-server
+```
