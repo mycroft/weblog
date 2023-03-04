@@ -2,6 +2,8 @@
 title: "Playing With Minikube"
 date: 2021-12-01T20:38:20+01:00
 summary: "How I spent an evening doing basic kubernetes things for fun and really no profit"
+categories:
+  - kubernetes
 ---
 
 Hello World. Today I'll play with minikube. I never done that before, as I'm not a daily kubernetes user at all & needed a refresh.

@@ -24,6 +24,13 @@ hugo server -D
 Once running, check the website by going on http://localhost:1313/weblog/
 
 
+# Create a new article
+
+```sh
+hugo new posts/deploying-and-testing-an-eks-cluster-with-terraform.md
+```
+
+
 # Deploy
 
 Just commit & push. The CI will generate the website & deploy it.

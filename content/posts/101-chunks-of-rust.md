@@ -2,6 +2,8 @@
 title: "101 Chunks of Rust"
 date: 2021-12-28T18:31:03+01:00
 summary: "Keeping a track of usefull Rust snippets."
+categories:
+  - rust
 ---
 
 I'm ~~learning~~ writing more & more rust. But I really lack writing idiomatic code. So, I've decided to gather small useful Rust snippets on this page. No particular order, the more I want to write, the more it will be written on it.
