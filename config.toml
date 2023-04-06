@@ -1,40 +1,8 @@
 baseURL = 'https://mkz.me/weblog/'
 languageCode = 'en-us'
-title = "Patrick's new weblog (at least the 42th)"
+title = "mkz.me/weblog: Patrick's tech musings"
 theme = 'anubis'
 paginate = 1024
-
-[menu]
-[[menu.main]]
-  identifier = "home"
-  name = "Home"
-  url = "/"
-  weight = 1
-
-[[menu.main]]
-  identifier = "projects"
-  name = "Projects"
-  url = "/projects"
-  weight = 2
-
-[[menu.main]]
-  identifier = "categories"
-  name = "Categories"
-  url = "/categories"
-  weight = 9
-
-[[menu.main]]
-  identifier = "archive"
-  name = "Archives"
-  url = "/posts/"
-  weight = 10
-
-[[menu.main]]
-  identifier = "back"
-  name = "Back to /"
-  url = "https://mkz.me/"
-  weight = 11
-
 
 [params]
   style = 'auto'
@@ -43,6 +11,10 @@ paginate = 1024
   readMore = false
   customCSS = ["custom.css"]
   enableGitInfo = true
+
+[[params.social]]
+  id = "house"
+  url = "https://mkz.me/"
 
 [[params.social]]
   id = "email"
@@ -55,6 +27,10 @@ paginate = 1024
 [[params.social]]
   id = "github"
   name = "mycroft"
+
+[[params.social]]
+  id = "reddit"
+  name = "myc"
 
 [[params.social]]
   id = "twitter"

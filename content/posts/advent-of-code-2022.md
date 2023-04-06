@@ -62,3 +62,4 @@ Today's exercise was about doing intersections of sets. Well, rust happens to ha
     }
 ```
 
+All other exercises are on my [Github account](https://github.com/mycroft/challenges/tree/master/advent-of-code/2022).
