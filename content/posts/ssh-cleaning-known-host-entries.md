@@ -1,7 +1,6 @@
 ---
 title: "ssh: Cleaning known_hosts obsolete entries"
 date: 2023-09-21T20:36:54+02:00
-draft: true
 categories:
 - ssh
 summary: |
