@@ -2,7 +2,7 @@
 title: "DG'hAck: Jobboard and Involucrypt2"
 date: 2020-12-04T08:56:30+01:00
 summary: "DG'hAck 2020 exercises: Jobboard & Involucrypt2"
-categories:
+tags:
   - dghack2020
 ---
 

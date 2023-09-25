@@ -4,7 +4,7 @@ date: 2010-05-06
 summary:
   Every weblog should have a hello world page.
 favorite: true
-categories:
+tags:
 - rust
 ---
 

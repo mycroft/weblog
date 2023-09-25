@@ -1,7 +1,7 @@
 ---
 title: "DG'hAck: Easy Challenges"
 date: 2020-11-30T19:45:41+01:00
-categories:
+tags:
   - dghack2020
 summary: "Short write-up of the easiest DG'hAck challenges."
 ---

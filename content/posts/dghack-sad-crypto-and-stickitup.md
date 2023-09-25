@@ -1,7 +1,7 @@
 ---
 title: "DG'hAck: Sad Crypto and Stickitup"
 date: 2020-12-02T13:43:03+01:00
-categories:
+tags:
   - dghack2020
 summary: "Another DG'hAck 2020 challenges: sad crypto & stickitup"
 ---

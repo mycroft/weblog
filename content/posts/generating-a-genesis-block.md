@@ -1,7 +1,7 @@
 ---
 title:  "Generating a genesis block"
 date:   2018-03-18T13:34:56+0100
-categories:
+tags:
   - bitcoin
 summary: "How to generate a Bitcoin Genesis block"
 ---

@@ -2,7 +2,7 @@
 title: "Encrypt your usb key under Linux with LUKS"
 date: 2010-05-14
 summary: "Learn LUKS to add some security on your USB keys"
-categories:
+tags:
   - linux
 ---
 

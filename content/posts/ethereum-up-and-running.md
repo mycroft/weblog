@@ -1,7 +1,7 @@
 ---
 title:  "Ethereum: Up & Running"
 date:   2018-04-01T08:48:14+0200
-categories:
+tags:
   - ethereum
 summary: "Quick introduction to running Ethereum"
 ---

@@ -2,7 +2,7 @@
 title: "101 Chunks of Rust"
 date: 2021-12-28T18:31:03+01:00
 summary: "Keeping a track of usefull Rust snippets."
-categories:
+tags:
   - rust
 ---
 

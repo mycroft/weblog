@@ -2,7 +2,7 @@
 title: "DG'hAck: Gitbad, Bwing & Shadowmallet, Time for something different"
 date: 2020-12-01T21:02:53+01:00
 summary: "Another set of DG'hAck 2020 writeups"
-categories:
+tags:
   - dghack2020
 ---
 

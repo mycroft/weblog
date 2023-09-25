@@ -1,7 +1,7 @@
 ---
 title:  "Bitcoin: Parsing the chainstate"
 date:   2018-04-27T15:11:55+0200
-categories:
+tags:
   - bitcoin
 summary: "How to track the spendable transaction in Bitcoin by exploring the chainstate database"
 ---

@@ -2,6 +2,9 @@
 title: "Advent of Code 2022"
 date: 2022-12-02T20:46:16+01:00
 summary: My journey doing the AOC 2022
+tags:
+  - adventofcode
+  - rust
 ---
 
 On this page, I'll sum up daily my experience doing the [Advent of Code 2022](https://adventofcode.com/2022).

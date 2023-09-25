@@ -2,7 +2,7 @@
 title: "Building a Simple Webapi Using Actix"
 date: 2021-11-22T11:32:13+01:00
 summary: "Building a real simple API using Actix"
-categories:
+tags:
   - rust
 ---
 

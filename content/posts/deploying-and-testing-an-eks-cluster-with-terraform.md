@@ -2,7 +2,7 @@
 title: "Deploying and Testing an Eks Cluster With Terraform"
 date: 2022-02-13T10:41:08+01:00
 draft: true
-categories:
+tags:
   - aws
   - kubernetes
   - terraform

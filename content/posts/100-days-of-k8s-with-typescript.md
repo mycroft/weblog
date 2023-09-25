@@ -2,9 +2,9 @@
 title: "100 Days of K8S with Typescript"
 date: 2022-09-25T20:54:51+02:00
 summary: Let's write some stuff in typescript
-categories:
-- kubernetes
-- typescript
+tags:
+  - kubernetes
+  - typescript
 ---
 
 This post will be another attempt to learn Kubernetes, using typescript & cdk8s this time.

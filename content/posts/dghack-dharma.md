@@ -2,7 +2,7 @@
 title: "DG'hAck 2020: The 'dharma.exe' challenge"
 date: 2020-11-28T23:03:43+01:00
 summary: "dharma binary analysis: Breaking binary protections"
-categories:
+tags:
   - dghack2020
 ---
 

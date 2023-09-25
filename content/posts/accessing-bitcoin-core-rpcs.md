@@ -1,7 +1,7 @@
 ---
 title:  "Accessing Bitcoin core RPCs"
 date:   2018-03-04T08:56:27+0100
-categories:
+tags:
   - bitcoin
 summary: "How to access the bitcoin core daemon using RPCs & Python"
 ---
