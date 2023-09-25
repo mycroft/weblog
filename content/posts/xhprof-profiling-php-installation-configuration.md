@@ -2,7 +2,7 @@
 title: "xhprof, profiling PHP: Installation & configuration"
 date: 2010-05-10
 summary: "Profile PHP code like nobody else with xhprof"
-categories:
+tags:
   - php
 ---
 

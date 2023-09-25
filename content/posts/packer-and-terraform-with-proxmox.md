@@ -1,7 +1,6 @@
 ---
 title: "Packer and Terraform With Proxmox"
 date: 2023-09-22T11:40:09+02:00
-draft: true
 summary: |
   Building system images with packer & deploying them with Terraform
 tags:

@@ -1,7 +1,7 @@
 ---
 title:  "Understanding bitcoin addresses (part 2)"
 date:   2018-03-08T07:14:09+0100
-categories:
+tags:
 - bitcoin
 summary: "Decrypting the Bitcoin addresses format (Part 2)"
 ---

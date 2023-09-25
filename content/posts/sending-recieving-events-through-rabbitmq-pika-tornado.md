@@ -2,6 +2,8 @@
 title: "Sending/recieving events through Rabbitmq with Pika & Tornado"
 date: 2012-10-16T10:02:00
 summary: "Quick test of Pika, Tornado & Rabbitmq."
+tags:
+  - python
 ---
 
 [**Rabbitmq**](http://www.rabbitmq.com/) is very usefull when moving messages between 2 or more apps.

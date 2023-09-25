@@ -1,7 +1,7 @@
 ---
 title:  "Kubernetes: Launching & accessing running applications inside the cluster"
 date:   "2019-05-22T14:24:52+0200"
-categories:
+tags:
   - kubernetes
 summary: "Launching & getting into running apps in kubernetes"
 ---

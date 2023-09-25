@@ -2,6 +2,8 @@
 title: VirtualBox and external dhcp management with dnsmasq
 date: 2013-04-18T13:28:00
 summary: Tweaking VirtualBox to setup a dnsmasq as a dhcp server 
+tags:
+  - linux
 ---
 
 I use [VirtualBox](https://www.virtualbox.org/) like many for my development VMs. One of mine problems with VirtualBox is, sometimes, that we want to manage their IPs in a more complex fashion than what's possible with its internal DHCP server (when using "host-only" interfaces), mostly because it doesn't allow statc IP configuration.

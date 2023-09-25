@@ -4,6 +4,8 @@ date: 2022-11-19T12:23:30+01:00
 draft: true
 summary: |
   Kubernetes from 0 to prod: A exercices based learning path.
+tags:
+  - kubernetes
 ---
 # Abstract
 

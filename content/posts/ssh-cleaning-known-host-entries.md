@@ -1,7 +1,7 @@
 ---
 title: "ssh: Cleaning known_hosts obsolete entries"
 date: 2023-09-21T20:36:54+02:00
-categories:
+tags:
 - ssh
 summary: |
   ssh: Disable strict host checking or removing them

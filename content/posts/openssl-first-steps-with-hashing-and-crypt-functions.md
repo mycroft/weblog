@@ -2,6 +2,8 @@
 title: "OpenSSL: First steps with Hashing and crypt functions"
 date: 2010-05-07
 summary: "Basic play with OpenSSL hashing & crypt functions"
+tags:
+  - openssl
 ---
 
 As I'm starting to work with [OpenSSL](https://www.openssl.org/) to rewrite my [password wallet](http://github.com/mycroft/mnkPasswordKeeper), which uses [ECB mode](http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation) to store data, I wanted to write down a few notes about how to use it.

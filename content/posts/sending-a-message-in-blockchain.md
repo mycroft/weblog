@@ -1,7 +1,7 @@
 ---
 title:  "Sending a message in the blockchain"
 date:   2018-03-11T08:33:17+0100
-categories:
+tags:
   - bitcoin
 summary: "USing bitcoin scripting to send and store a message in the blockchain"
 ---

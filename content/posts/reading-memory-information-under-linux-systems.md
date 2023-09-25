@@ -2,6 +2,8 @@
 title: "Reading memory information under Linux systems"
 date: 2013-06-15T13:24:00
 summary: "Some bits to understand the Linux memory numbers"
+tags:
+  - linux
 ---
 
 Introduction

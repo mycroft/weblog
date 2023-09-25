@@ -2,6 +2,8 @@
 title: Cleaning PostgreSQL tables
 date: 2010-05-26T17:52:00
 summary: "Quick note on how making some cleanup in postgresql database"
+tags:
+  - postgresql
 ---
 When a PostgreSQL database takes too much place, it may be time to make some cleanup. And sometimes, a big DELETE with a VACUUM FULL may not be enough. For example, today I've find out a few things to do to cleanup things more deeply.
 

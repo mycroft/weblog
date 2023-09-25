@@ -1,7 +1,7 @@
 ---
 title:  "Setup & running systemd user services"
 date:   "2018-05-12T11:26:20+0200"
-categories:
+tags:
   - linux
 summary: "How to manage new services for users with systemd."
 ---

@@ -1,7 +1,7 @@
 ---
 title:  "Recreating a ecdsa key pair using Openssl"
 date:   2018-03-24T16:05:02+0100
-categories:
+tags:
   - openssl
 summary: "Quick tip to how generate a ecdsa key pair using command line openssl tools"
 ---

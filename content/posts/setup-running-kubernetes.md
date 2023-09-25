@@ -1,7 +1,7 @@
 ---
 title:  "Setup & running kubernetes"
 date:   "2019-05-15T11:25:35+0200"
-categories:
+tags:
   - kubernetes
 summary: "First steps trying to use kubernetes"
 ---

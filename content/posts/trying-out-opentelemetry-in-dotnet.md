@@ -1,7 +1,7 @@
 ---
 title: "Trying Out Opentelemetry in Dotnet"
 date: 2021-11-10T22:01:08+01:00
-categories:
+tags:
   - opentelemetry
 summary: "Quick introduction of using Opentelemetry in C#/dotnet."
 ---

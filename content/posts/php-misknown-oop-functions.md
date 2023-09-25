@@ -2,6 +2,8 @@
 title: "PHP: Misknown OOP functions"
 date: 2012-07-25T11:49:00
 summary: "Some of unknown useful PHP functions"
+tags:
+  - php
 ---
 While reading PHP documentation, especially the [OOP chapter](http://www.php.net/manual/en/language.oop5.php), I've discovered a few functions I didn't know of, even if I use a lot PHP in my daily job.
 Please note that PHP5 was introduced in 2004, and these methods may evolve.

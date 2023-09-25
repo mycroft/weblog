@@ -2,6 +2,8 @@
 title: "Python: Reload source files"
 date: 2011-03-26
 summary: "Reload Python scripts without restarting whole apps"
+tags:
+  - python
 ---
 
 When I was writing [BUTT - an irc bot](https://github.com/mycroft/Butt), I wanted to create a mini plugin system, to add or modify code without restarting any process. Python allows this natively using the [imp module](http://docs.python.org/library/imp.html). In the following examples, I'll show how to use the *load_source* procedure to load and parse a new source file.
