@@ -258,3 +258,4 @@ kube-vm-1$ cilium connectivity test
 ✅ All 42 tests (306 actions) successful, 13 tests skipped, 0 scenarios skipped.
 ```
 
+When tests are completed, the `cilium-test` namespace can be deleted to remove all testing pods and configurations.
