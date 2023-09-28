@@ -136,6 +136,76 @@ desktop$ curl http://10.42.42.54/
 
 ```
 
+### Using shared ingress
+
+Now, I've an issue I'm unhappy with. By default, `cilium` will create/use `dedicated` loadbalancer services, and then, reserve a pool IP for each `Ingress`. I want to use a single entry point. And make sure IP is always the same.
+
+I'll patch the `kube-system`'s `svc/cilium-ingress` to reserve a single IP from my pool:
+
+```sh
+$ kubectl patch service -n kube-system cilium-ingress -p '{"metadata": {"annotations": {"io.cilium/lb-ipam-ips": "10.42.42.42"}}}' --type merge
+service/cilium-ingress patched
+$ kubectl get service -n kube-system cilium-ingress
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+cilium-ingress   LoadBalancer   10.107.131.201   10.42.42.42   80:30490/TCP,443:32168/TCP   2d
+```
+
+Next, I patch the `Ingress` annotations to use the `shared` LoadBalancer:
+
+```sh
+$ kubectl patch ingress basic-ingress -p '{"metadata": {"annotations": {"ingress.cilium.io/loadbalancer-mode": "shared"}}}' --type merge
+ingress.networking.k8s.io/basic-ingress patched (no change)
+$ kubectl get ingress basic-ingress
+NAME            CLASS    HOSTS   ADDRESS       PORTS   AGE
+basic-ingress   cilium   *       10.42.42.42   80      2d
+```
+
+### Setting a CA & TLS certificates
+
+Setting up default TLS certs:
+
+```sh
+$ apt-get install -y minica
+...
+$ mkdir k8s-wildcard && cd k8s-wildcard
+$ minica minica '*.k8s'
+$ minica '*.svc.k8s'
+Creating a auto cert:
+
+Client Cert: false
+Common Name: *.svc.k8s
+Org:         Example Organization
+Cert Flavor: auto
+Output crt:  *.svc.k8s.crt
+Output key:  *.svc.k8s.key
+
+$ kubectl create secret tls -n kube-system default-cert --cert=*.svc.k8s.crt --key=*.svc.k8s.key
+
+$ cilium upgrade --version 1.14.2 --reuse-values --set ingressController.defaultSecretNamespace=kube-system --set ingressController.defaultSecretName=default-cert 
+```
+
+Then, add the `tls` section in the `Ingress`:
+
+```yaml
+spec:
+  tls:
+  - hosts:
+    - chocapic.svc.k8s
+```
+
+The service should now be available from `https://chocapic.svc.k8s/`:
+
+```sh
+$ curl -k --resolve chocapic.svc.k8s:443:10.42.42.42 https://chocapic.svc.k8s/
+<html>
+  <head>
+    <title>Simple Bookstore App</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+```
+
 ## Enabling Hubble
 
 ```sh

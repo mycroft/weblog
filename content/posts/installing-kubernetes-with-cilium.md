@@ -149,7 +149,8 @@ kube-vm-1$ export KUBECONFIG=/etc/kubernetes/admin.conf
 kube-vm-1$ cilium install \
   --version 1.14.2 \
   --set ipam.operator.clusterPoolIPv4PodCIDRList='{192.168.0.0/17}' \
-  --set kubeProxyReplacement=true
+  --set kubeProxyReplacement=true \
+  --set bpf.masquerade=true
 ℹ️  Using Cilium version 1.14.2
 🔮 Auto-detected cluster name: kubernetes
 🔮 Auto-detected kube-proxy has not been installed
