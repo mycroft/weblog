@@ -1,7 +1,6 @@
 ---
 title: "Cilium: Enabling Hubble, Ingress Controller on LAN"
 date: 2023-09-26T15:31:14+02:00
-draft: true
 summary: |
   Enable some Cilium features: Hubble, Ingress on LAN, etc.
 tags:
