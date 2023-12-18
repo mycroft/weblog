@@ -12,6 +12,10 @@ I recently put myself into security again, and after having played a bit with [r
 
 I wanted to write my resolution to the challenges, but as they went down, I could not reproduce nor do the correct level of writings I wished. So here is a sum-up with other people writeups instead.
 
+Anyway, we (the `#olschool` team) finished first:
+
+![DG'h4ck 2023 scoreboard](images/dghack-2023.png)
+
 ## Feed This Dragon
 
 A simple javascript/json api game. It was purely code to write to automatize playing it (just click on the right elements, pay for upgrades, that kind of stuff), breaking multiple achievements and getting the flag at the end. [writeup](https://github.com/retyuil/DGHACK-2023-write_up/tree/main/Feed%20This%20Dragon)
