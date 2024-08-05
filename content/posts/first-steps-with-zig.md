@@ -271,8 +271,9 @@ pub fn main() !void {
 
     // ...
     for (entries.items) |entry| {
+        defer allocator.free(entry);
+
         // ...
-        allocator.free(entry);
     }
 }
 ```
