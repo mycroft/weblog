@@ -294,3 +294,5 @@ If everything is all right, no error will be reported.
 # Wrap-up
 
 In this introductory article, a small `ls` implementation was quickly written in Zig. We sorted strings, played with command line arguments and memory using a basic heap allocator.
+
+Source code for this article is available on [github](https://github.com/mycroft/zig-bits/blob/main/ls.zig).
