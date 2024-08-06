@@ -241,7 +241,7 @@ pub fn main() !void {
     }
 ```
 
-It semes this does the job.
+It seems this does the job.
 
 Last, I'm not really comfortable with the allocator. I'm afraid that something leaks. To check if nothing is wrong, I'll use `GeneralPurposeAllocator` to check possible leak or errors. Make sure to replace all `std.heap.page_allocator` with `allocator`:
 
