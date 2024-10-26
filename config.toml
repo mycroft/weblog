@@ -2,7 +2,9 @@ baseURL = 'https://mkz.me/weblog/'
 languageCode = 'en-us'
 title = "mkz.me/weblog: Patrick's tech musings"
 theme = 'anubis'
-paginate = 1024
+
+[pagination]
+  pageSize = 10
 
 [params]
   style = 'auto'
