@@ -9,7 +9,7 @@ steps:
   - git submodule update --init --recursive
 
 - name: build
-  image: pmarie/golang-hugo:latest
+  image: registry.mkz.me/mycroft/golang-hugo:latest
   environment:
     RSYNC_USER:
       from_secret: RSYNC_USER
