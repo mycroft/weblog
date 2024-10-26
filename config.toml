@@ -28,7 +28,3 @@ paginate = 1024
   id = "github"
   name = "mycroft"
 
-
-[[params.social]]
-  id = "twitter"
-  name = "mycroft"
