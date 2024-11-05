@@ -74,11 +74,11 @@ PRIVMSG #emergency :He also handed over a strange looking string CTF[E65D46AD10F
 
 They are talking about `john`, which probably is John the ripper. Let's find out:
 
-`````sh
+```sh
 $ echo "E65D46AD10F92508F500944B53168930" > flag.txt
 $ ./john --show flag.txt
 ?:RICKROLL
-````md
+```
 
 Our flag is then `CTF[RICKROLL]`.
 
@@ -87,7 +87,7 @@ In the chat between the 2 users d3f3nd3r & An4lys3r in the #emergency channel, w
 ```md
 PRIVMSG An4lys3r :.DCC SEND RANSOM_NOTE.gz 199 0 95285 221.
 PRIVMSG #emergency :SHA-256 checksum for /home/user/emergency_net/DCC/RANSOM_NOTE.gz (remote): 7113f236b43d1672d881c6993a8a582691ed4beb4c7d49befbceb1fddfb14909
-`````
+```
 
 ````
 
