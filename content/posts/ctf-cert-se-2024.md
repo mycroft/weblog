@@ -3,7 +3,7 @@ title: "CTF: CERT-SE 2024 (cyber security month)"
 date: 2024-10-26T17:32:22+02:00
 summary: "Write up of the CERT-SE 2024 CTF"
 tags:
-- ctf
+  - ctf
 ---
 
 That's October, and it seems it is the cyber security awareness month. And for some reason, doing CTF is kinda common on October, so I've done the [swedish CERT CTF](https://www.cert.se/2024/09/cert-se-ctf2024.html). So let's go for a quick write-up!
@@ -24,7 +24,6 @@ Can you find all the flags?
 Given file is: **CERT-SE_CTF2024.zip** (31542062 bytes, sha256:af05dc01984ca12cecadc65ea5216667c897791ce7ef8712466529184ae37346)
 
 There are a total of 9 flags to find out.
-
 
 ## First flags: The IRC chat
 
@@ -49,9 +48,9 @@ At first, following the tcp stream (ie: right click + follow + TCP Stream) on th
 CAP LS 302
 PASS CTF[AES128]
 NICK D3f3nd3r
-USER user1 0 * :realname
+USER user1 0 \* :realname
 
-:irc.ctf.alt CAP * LS :multi-prefix
+:irc.ctf.alt CAP \* LS :multi-prefix
 
 CAP REQ :multi-prefix
 CAP END
@@ -66,12 +65,31 @@ PRIVMSG #emergency :He also handed over a strange looking string CTF[E65D46AD10F
 PING LAG1727122591261
 ```
 
+However, `CTF[E65D46AD10F92508F500944B53168930]` is not our flag, as there is an hint after mentioning it:
+
+```md
+PRIVMSG #emergency :He also handed over a strange looking string CTF[E65D46AD10F92508F500944B53168930], does it make sense to you?
+:An4lys3r!~user1@10.0.0.10 PRIVMSG #emergency :not really, but why don't you ask john?
+```
+
+They are talking about `john`, which probably is John the ripper. Let's find out:
+
+`````sh
+$ echo "E65D46AD10F92508F500944B53168930" > flag.txt
+$ ./john --show flag.txt
+?:RICKROLL
+````md
+
+Our flag is then `CTF[RICKROLL]`.
+
 In the chat between the 2 users d3f3nd3r & An4lys3r in the #emergency channel, we can see they are exchanging another file, and talking about some other files.
 
 ```md
 PRIVMSG An4lys3r :.DCC SEND RANSOM_NOTE.gz 199 0 95285 221.
 PRIVMSG #emergency :SHA-256 checksum for /home/user/emergency_net/DCC/RANSOM_NOTE.gz (remote): 7113f236b43d1672d881c6993a8a582691ed4beb4c7d49befbceb1fddfb14909
-```
+`````
+
+````
 
 ## why_not
 
@@ -88,7 +106,7 @@ $ less file0
 CCCCCCCCCCCTCCCCCFCCCCC[CCCCCOCCCCCRC...
 ```
 
-Great, something to read. File contains C, T, F, [, etc. letters. The flag is hidden in it and quite easily to extract. After having giving it a think, I found out this is just a sequence that starts with *CCCCCC*, *CCCCCT*, *CCCCCF*, ... until *RRRRRR*. If we rebuild the whole file and do a quick diff, we find out a *CTF[OR]* is breaking the sequence on byte 23472 of the file.
+Great, something to read. File contains C, T, F, [, etc. letters. The flag is hidden in it and quite easily to extract. After having giving it a think, I found out this is just a sequence that starts with _CCCCCC_, _CCCCCT_, _CCCCCF_, ... until _RRRRRR_. If we rebuild the whole file and do a quick diff, we find out a _CTF[OR]_ is breaking the sequence on byte 23472 of the file.
 
 ```python
 #!/usr/bin/env python
@@ -119,6 +137,7 @@ for r in res:
 ```
 
 Running it:
+
 ```sh
 $ python decode-dcc-file.py
 3912 CTF[OR
@@ -130,7 +149,7 @@ CTF[OR]C[CCO
 
 # FTP files
 
-In *tcp.stream eq 3*, we observe a FTP connection and see that a file named *corp_net1.pcap* is downloaded.
+In _tcp.stream eq 3_, we observe a FTP connection and see that a file named _corp_net1.pcap_ is downloaded.
 
 In the next stream, we retrieve it:
 
@@ -143,9 +162,9 @@ $ eza -l corp_net1.pcap
 .rw-r--r-- 23M mycroft 26 Oct 18:08 corp_net1.pcap
 ```
 
-Great, another *pcap* file. Before checking it out, let's finish the initial *pcap*.
+Great, another _pcap_ file. Before checking it out, let's finish the initial _pcap_.
 
-In *tcp.stream eq 5*, there is another downloaded *corp_net2.pcap* file downloaded. Exporting from next stream gives us:
+In _tcp.stream eq 5_, there is another downloaded _corp_net2.pcap_ file downloaded. Exporting from next stream gives us:
 
 ```sh
 $ eza -l corp_net2.pcap ; file corp_net2.pcap ; sha256sum corp_net2.pcap
@@ -154,7 +173,7 @@ corp_net2.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 
 944023687d287d63bd0c5355e7778239f963104e292c1ad1ad782acecef3f094  corp_net2.pcap
 ```
 
-In *tcp.stream eq 7*, a file named *disk1.img* is downloaded. It is recoverable with stream 8.
+In _tcp.stream eq 7_, a file named _disk1.img_ is downloaded. It is recoverable with stream 8.
 
 ```sh
 $ eza -l disk1.img ; file disk1.img ; sha256sum disk1.img
@@ -176,10 +195,9 @@ That's a lot of investigation to go through! We have 6 flags to retrieve from al
 
 There is nothing else interesting in the initial pcap.
 
-
 # Studying corp_net1.pcap
 
-At first, I filter out all 443 traffic. I do not have any cert secret key, so most I won't be able to decrypt any traffic. I find out there is more files exchanged. In tcp.stream *59*, another FTP connection, with a file named *puzzle.exe*. I export it from stream *60*:
+At first, I filter out all 443 traffic. I do not have any cert secret key, so most I won't be able to decrypt any traffic. I find out there is more files exchanged. In tcp.stream _59_, another FTP connection, with a file named _puzzle.exe_. I export it from stream _60_:
 
 ```sh
 $ eza -l puzzle.exe ; file puzzle.exe ; sha256sum puzzle.exe
@@ -188,7 +206,7 @@ puzzle.exe: PE32+ executable (GUI) x86-64, for MS Windows, 6 sections
 3319e9fd2c3a50d8e41c753d58769480eaf1dde78b16f0e5c61da0d1d457ed2c  puzzle.exe
 ```
 
-In stream *63*, another ftp file downloaded: *Recycle-bin.zip*. We export it from stream *64*:
+In stream _63_, another ftp file downloaded: _Recycle-bin.zip_. We export it from stream _64_:
 
 ```sh
 $ eza -l Recycle-bin.zip ; file Recycle-bin.zip ; sha256sum Recycle-bin.zip
@@ -235,7 +253,6 @@ There is something going on here.
 
 I wrote a quick script to extract the data:
 
-
 ```py
 #!/usr/bin/env python
 
@@ -278,12 +295,11 @@ $ file decoded-dns-file.png
 .rw-r--r-- 3.0k mycroft 26 Oct 18:39 decoded-dns-file.png
 ```
 
-Looking at the file allows getting a new flag: *CTF[TOPPALUA]*. That's our 4th flag out of 9.
-
+Looking at the file allows getting a new flag: _CTF[TOPPALUA]_. That's our 4th flag out of 9.
 
 # Recycle-bin
 
-Now, let's take a look at *Recycle-bin.zip*. Unzipping it extracts a ... windows recycle bin content. While searching for some indication of a flag in all the files, I find out this strange entry, and luckily the flag was there:
+Now, let's take a look at _Recycle-bin.zip_. Unzipping it extracts a ... windows recycle bin content. While searching for some indication of a flag in all the files, I find out this strange entry, and luckily the flag was there:
 
 ```sh
 $ strings -e b \$I80Z3YX.txt
@@ -294,7 +310,6 @@ CTF[PENTOMINOS]
 ```
 
 5th flag: done.
-
 
 # the 'archive' file
 
@@ -309,9 +324,9 @@ $ sha256sum archive.raw ; eza -l archive.raw
 .rw-r--r-- 860 mycroft 26 Oct 18:51 archive.raw
 ```
 
-You'll have to gunzip the file, only finding out there is another *gz* in it. And again, and again, and again. Sometimes, it will be a *tar* instead. untar, and again *gunzip*, and again and again and again.
+You'll have to gunzip the file, only finding out there is another _gz_ in it. And again, and again, and again. Sometimes, it will be a _tar_ instead. untar, and again _gunzip_, and again and again and again.
 
-Eventually, it will end with some *txt* file with the flag in it:
+Eventually, it will end with some _txt_ file with the flag in it:
 
 ```sh
 $ bat -p archive.gz
@@ -320,14 +335,13 @@ CTF[IRRITATING]
 
 6 flags in, 3 to go.
 
-
 # Puzzle.exe
 
 Well this one. I took some time to go through because of my bad eyes. And because you need a Windows workstation.
 
-Easy answer: run it, play the (badly) coded game, take a good look at the picture once ordered, especially at the books, and you'll be able to read the flag: *CTF[HAPPYBIRTHDAY]*. That's our 7th flag.
+Easy answer: run it, play the (badly) coded game, take a good look at the picture once ordered, especially at the books, and you'll be able to read the flag: _CTF[HAPPYBIRTHDAY]_. That's our 7th flag.
 
-Now, I've done a bit more on this one. I've run *pyinstxtractor.py* on *puzzle.exe* to extract the game:
+Now, I've done a bit more on this one. I've run _pyinstxtractor.py_ on _puzzle.exe_ to extract the game:
 
 ```sh
 $ pyinstxtractor.py puzzle.exe
@@ -408,7 +422,7 @@ while running:
 pygame.quit()
 ```
 
-There is the image in it! You can also extract it with *strings*:
+There is the image in it! You can also extract it with _strings_:
 
 ```sh
 $ strings -n 200 puzzle_new.pyc | tr -d '\n' | sed -e 's/data:image\/png;base64,//' | base64 -d > picture.png
@@ -418,14 +432,13 @@ And you can get the flag the same way than if you play the game. No more Windows
 
 We have two flags remaining to find out.
 
-
 ## corp_net2.pcap, the NTLM challenge
 
-Next, I've opened the last *pcap* file. I found out that there were some SMB and NTLM authentication attempt. Time to use *hashcat* and check if we can find out some flags!
+Next, I've opened the last _pcap_ file. I found out that there were some SMB and NTLM authentication attempt. Time to use _hashcat_ and check if we can find out some flags!
 
-I found out an OK webdav auth query in the *pcap*. It's happening in *tcp.stream eq 57*.
+I found out an OK webdav auth query in the _pcap_. It's happening in _tcp.stream eq 57_.
 
-I've created an *hashes-webdav* file extracting the server challenge and the client challenge and response:
+I've created an _hashes-webdav_ file extracting the server challenge and the client challenge and response:
 
 ```sh
 $ cat hashes-webdav
@@ -433,7 +446,6 @@ CTF::LAB:fe26bf30955b64d7:a406a1570d0391d358354bb21df7d12e:0101000000000000158be
 ```
 
 format is <user>::<group>::<server challenge>::<client challenge+response>
-
 
 Running hashcat, using the given wordlist (remember!)
 
@@ -450,8 +462,7 @@ Do NOT report auto-detect issues unless you are certain of the hash type.
 CTF::LAB:fe26bf30955b64d7:a406a1570d0391d358354bb21df7d12e:0101000000000000158bece036fada0136c00153f7ab788b00000000020008004d00550044004a0001001e00570049004e002d0035004600560037004d004e0055004200410030004b00040014004d00550044004a002e004c004f00430041004c0003003400570049004e002d0035004600560037004d004e0055004200410030004b002e004d00550044004a002e004c004f00430041004c00050014004d00550044004a002e004c004f00430041004c000800300030000000000000000000000000200000fd6f62357ae25314e0b8f63ab17e5d1821479e68ec22e7ee70827eadb2f393200a001000000000000000000000000000000000000900200048005400540050002f00640063006300300031002e006c006f00630061006c000000000000000000:[RHODE_ISLAND_Z]
 ```
 
-And that's out CTF-less flag: *[RHODE_ISLAND_Z]*.
-
+And that's out CTF-less flag: _[RHODE_ISLAND_Z]_.
 
 # Last file to investigate: disk1.img
 
@@ -501,15 +512,14 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 3178496       0x308000        OpenSSL encryption, salted, salt: 0x1B70151F197C9A78
 ```
 
-Okay, there is more stuff in it. I'll use *photorec* to recover files:
+Okay, there is more stuff in it. I'll use _photorec_ to recover files:
 
 ```md
 ... with photorec ...
 
 Disk disk1 - 1073 MB / 1024 MiB (RO)
-     Partition                  Start        End    Size in sectors
-   P FAT32                    0   0  1   130 138  8    2097152 [NO NAME]
-
+Partition Start End Size in sectors
+P FAT32 0 0 1 130 138 8 2097152 [NO NAME]
 
 2 files saved in /home/mycroft/dev/ctf-cert-se-2024/disk1/mnt/recup_dir directory.
 Recovery completed.
@@ -542,7 +552,7 @@ CLIENT_TRAFFIC_SECRET_0 cb68ed4293ea43b5ae0f949b7d36f9e801cdea8025cb8ce61b2226a1
 
 So we know how the file was created, and we have a TLS key debug log file.
 
-Using wireshark, import this file in TLS protocol preferences, as the (pre)-master secret, and search for *GET /1.txt*.
+Using wireshark, import this file in TLS protocol preferences, as the (pre)-master secret, and search for _GET /1.txt_.
 
 You'll find out the downloaded file's content is 'pheiph0Xeiz8OhNa'. So now, just use openssl to decrypt the file:
 
@@ -555,13 +565,12 @@ CTF[OPPORTUNISTICALLY]
 
 And that's it!
 
-
 # Wrap-up
 
 All flags are:
 
 - CTF[AES128] ~ in IRC headers in the initial IRC connection
-- CTF[E65D46AD10F92508F500944B53168930] ~ during the IRC chat
+- CTF[RICKROLL] ~ during the IRC chat
 - CTF[OR] ~ Found in the DCC file exchanged (why_not)
 - CTF[TOPPALUA] ~ in a PNG trasmit in DNS queries
 - CTF[PENTOMINOS] ~ in a base32 encoded file name in deleted metadata in the recycle-bin
@@ -571,3 +580,4 @@ All flags are:
 - CTF[OPPORTUNISTICALLY] ~ in an encrypted file in the disk1.img file
 
 That was a nice easy CTF! Looking forward to solving the next ones next year :-)
+````
