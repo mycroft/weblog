@@ -89,8 +89,6 @@ PRIVMSG An4lys3r :.DCC SEND RANSOM_NOTE.gz 199 0 95285 221.
 PRIVMSG #emergency :SHA-256 checksum for /home/user/emergency_net/DCC/RANSOM_NOTE.gz (remote): 7113f236b43d1672d881c6993a8a582691ed4beb4c7d49befbceb1fddfb14909
 ```
 
-````
-
 ## why_not
 
 I'll export the DCC using the **wireshark** export function to **file0.raw** on the 10.0.0.20 to 10.0.0.10 way only.
@@ -580,4 +578,7 @@ All flags are:
 - CTF[OPPORTUNISTICALLY] ~ in an encrypted file in the disk1.img file
 
 That was a nice easy CTF! Looking forward to solving the next ones next year :-)
-````
+
+```
+
+```
