@@ -578,7 +578,3 @@ All flags are:
 - CTF[OPPORTUNISTICALLY] ~ in an encrypted file in the disk1.img file
 
 That was a nice easy CTF! Looking forward to solving the next ones next year :-)
-
-```
-
-```
