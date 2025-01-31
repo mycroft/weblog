@@ -23,9 +23,12 @@ jobs:
       - name: Build Hugo site
         run: hugo
 
-      - name: Publish
-        env:
-          RSYNC_USER: ${{ secrets.RSYNC_USER }}
-          RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
-        run: |
-          rsync -avz --delete public/ $${RSYNC_USER}@maki.mkz.me::weblog
+      - uses: contention/rsync-deployments@v2.0.0
+        with:
+          FLAGS: -avz --delete
+          EXCLUDES: --exclude .htaccess --exclude /uploads/
+          USER: ${{ secrets.RSYNC_USER }}
+          HOST: maki.mkz.me
+          LOCALPATH: public/
+          REMOTEPATH: weblog
+          DEPLOY_KEY: ${{ secrets.RSYNC_PASSWORD }}
