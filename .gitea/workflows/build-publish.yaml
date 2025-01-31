@@ -29,4 +29,6 @@ jobs:
           RSYNC_USER: ${{ secrets.RSYNC_USER }}
           RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
         run: |
+          rsync --version
           rsync -avz --delete public/ ${{ RSYNC_USER }}@maki.mkz.me::weblog
+          echo "Done publishing"
