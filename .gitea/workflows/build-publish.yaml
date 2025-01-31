@@ -1,0 +1,29 @@
+name: Build and Publish Weblog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: registry.mkz.me/mycroft/golang-hugo:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Submodules
+        run: git submodule update --init --recursive
+
+      - name: Build
+        run: hugo
+
+      - name: Publish
+        env:
+          RSYNC_USER: ${{ secrets.RSYNC_USER }}
+          RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
+        run: |
+          rsync -avz --delete public/ $${RSYNC_USER}@maki.mkz.me::weblog
