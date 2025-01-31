@@ -24,11 +24,12 @@ jobs:
         run: hugo
 
       - uses: GuillaumeFalourd/setup-rsync@v1.2
+
       - name: Publish
         env:
           RSYNC_USER: ${{ secrets.RSYNC_USER }}
           RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
         run: |
           rsync --version
-          rsync -avz --delete public/ ${{ RSYNC_USER }}@maki.mkz.me::weblog
+          rsync -avz --delete public/ $RSYNC_USER@maki.mkz.me::weblog
           echo "Done publishing"
