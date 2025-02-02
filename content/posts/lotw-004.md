@@ -3,6 +3,9 @@ title: Weekly links (Ed. 4)
 date: 2025-01-25T17:48:28+01:00
 summary: |
   What I've read and done this week.
+tags:
+  - rust
+  - hyper
 ---
 
 Hi reader,
