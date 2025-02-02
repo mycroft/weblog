@@ -1,7 +1,6 @@
 ---
 title: Weekly links (Ed. 5)
 date: 2025-02-02T10:29:15+01:00
-draft: true
 summary: |
   What I've read and done this week.
 tags:
