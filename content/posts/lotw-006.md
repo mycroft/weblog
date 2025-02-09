@@ -16,10 +16,11 @@ This week I've found time working on my own project at work, at least a bit. I'v
 
 Links I found interesting this week were:
 
-- [git-guts](https://awasu.com/weblog/git-guts/) - I'm the kind of person who likes understanding stuff reading code. Most git internals guides are written without a single line of code, and I was really happy to find out this page;
+- [Git Guts: A deep dive into git internals](https://awasu.com/weblog/git-guts/) - I'm the kind of person who likes understanding stuff reading code. Most git internals guides are written without a single line of code, and I was really happy to find out this page;
 - [Great things about Rust that aren't just performance](https://ntietz.com/blog/great-things-about-rust-beyond-perf/) - I'll stop blogging when I stop finding Rust articles; I promise I should stop pasting the latest trending article. However, while I've been writing Rust code for a while, I'm starting to actually liking it;
 - [7 things a developer should know about databases](https://blog.octo.com/7-things-a-developer-should-know-about-databases);
 - [Jujutsu VCS Introduction and Patterns](https://kubamartin.com/posts/introduction-to-the-jujutsu-vcs/);
+- [We are destroying software](https://antirez.com/news/145) - I can only agree with most points; A lot of code is written then thrown away, especially mine, because I do not make the effort to make it usable or reusable. Shame on me.
 
 Nothing to add this week. There will be no update next week.
 
