@@ -1,5 +1,5 @@
 ---
-title: Weekly links (Ed. 6)
+title: Weekly links (Ed. 7)
 date: 2025-02-23T09:31:02+01:00
 summary: |
   What I've read and done the last 2 weeks
@@ -9,7 +9,7 @@ tags:
 
 Hi reader,
 
-Welcome to the Weekly Links edition 6! The last week-end I was away from home, and it went quite bad as the wife got ill. Also trains problems. It was a shitty weekend. Also, I'm trying to migrate terraform code at work to get it managed by terragrunt, and hell, I never read that much infrastructure code with that much circular dependencies.
+Welcome to the Weekly Links edition 7, not 6! The last week-end I was away from home, and it went quite bad as the wife got ill. Also trains problems. It was a shitty weekend. Also, I'm trying to migrate terraform code at work to get it managed by terragrunt, and hell, I never read that much infrastructure code with that much circular dependencies.
 
 Yesterday I just left my computer and watched movies! The last Ghostbuster movie, Fair game, Star Trek: Generations and 99 Francs. I'm still quite unsure why I've done that. I also played Civilization IV until 3 am.
 
