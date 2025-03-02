@@ -1,7 +1,6 @@
 ---
 title: Weekly links (Ed. 8)
 date: 2025-03-02T18:30:28+01:00
-draft: true
 summary: |
   What I've read and done this week.
 tags:
