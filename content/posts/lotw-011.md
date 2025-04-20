@@ -1,7 +1,6 @@
 ---
 title: Weekly links (Ed. 11)
 date: 2025-04-18T21:07:23+02:00
-draft: true
 summary: |
   What I've read, done and learned this past month.
 ---
@@ -18,5 +17,7 @@ I'll be quick and go directly to the links.
 - [Why I stopped using AI code editors](https://lucianonooijen.com/blog/why-i-stopped-using-ai-code-editors/) - Speaking of AIs, I'm aligning with the conclusion: _When you are using AI, you are sacrificing knowledge for speed._. What's important is what's done with it, and how it's done with it. As for now, I guess too much people is using badly.
 - [Why I'm No Longer Talking to Architects About Microservices](https://blog.container-solutions.com/why-im-no-longer-talking-to-architects-about-microservices) - At my job I've the "luck" to not have anyone to talk technical things with people. And the sentence _discussions about microservices are often detached from any tangible business goals_ kinda triggered me: As I can not have the technical speeches to fix issues, I can not fix the issues. And it is bothering me.
 - [PagedOut 6](https://pagedout.institute/download/PagedOut_006.pdf) was released a few weeks ago.
+
+I did not do anything relevant since last post. Just kinda playing World of Warcraft and getting bored.
 
 Well reader I'm gonna have a nap now so see you next time.
